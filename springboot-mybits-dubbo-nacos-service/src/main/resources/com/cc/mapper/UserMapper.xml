@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--上面2行的是约束依赖，固定照抄就好-->
+<!--下面的才是要自己编写的地方-->
+<!--写mapper的配置文件第一步就是要写<mapper></mapper>标签-->
+<!--<mapper></mapper>标签里包含着各个CURD操作的SQL语句-->
+<mapper namespace="com.cc.mapper.UserMapper">
+    <!--定义一个名为BaseResultMap的返回类型-->
+    <resultMap id="BaseResultMap" type="com.cc.pojo.QuotaUserUserd">
+        <id column="USE_ID" property="userId" jdbcType="INTEGER"></id>
+        <result column="USE_PSW" property="usePsw" jdbcType="INTEGER"></result>
+        <result column="OP_ID" property="opId" jdbcType="VARCHAR"></result>
+        <result column="ORG_ID" property="orgId" jdbcType="VARCHAR"></result>
+        <result column="REMARKS" property="remarks" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+
+    <insert id="insertUser" parameterType="com.cc.pojo.QuotaUserUserd">
+        insert into quota_user_used(USE_PSW,OP_ID,ORG_ID)values(#{usePsw},#{opId},#{orgId})
+    </insert>
+
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from quota_user_used where USE_ID =#{useId,jdbcType=INTEGER}
+    </delete>
+
+    <!--查找语句-->
+    <!--resultMap表示函数返回的类型-->
+    <select id="selectAll" resultMap="BaseResultMap" resultType="com.cc.pojo.QuotaUserUserd" >
+        select * from quota_user_used
+    </select>
+    <select id="selectById"  resultMap="BaseResultMap" parameterType="java.lang.Integer" resultType="com.cc.pojo.QuotaUserUserd" >
+        select * from quota_user_used where USE_ID =#{useId,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateUser" parameterType="com.cc.pojo.QuotaUserUserd">
+        update quota_user_used set USE_PSW=#{usePsw,jdbcType=INTEGER},OP_ID=#{opId,jdbcType=VARCHAR} where USE_ID=#{userId,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,0 +1,4 @@
+# Project exclude paths
+/springboot-api/target/
+/springboot-mybits-dubbo-nacos-controlller/target/
+/springboot-mybits-dubbo-nacos-service/target/

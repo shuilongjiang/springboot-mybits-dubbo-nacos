@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: service-provider
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/demotest?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&allowMultiQueries=true
+nacos:
+  service-address: 127.0.0.1
+  port: 8848
+dubbo:
+  registry:
+    address: nacos://${nacos.service-address}:${nacos.port}
+  protocol:
+    name: dubbo
+    port: 20881
+  scan:
+    base-packages: com.cc.service
+
+mybatis:
+  mapper-locations: classpath:com/cc/mapper/*.xml
