@@ -6,6 +6,7 @@ import com.cc.service.QuaryService;
 import com.fasterxml.classmate.types.ResolvedRecursiveType;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class QuarySeviceImpl implements QuaryService {
     public List<QuotaUserUserd> quaryAll() {
         return userMapper.selectAll();
     }
-
+    @Transactional
     public void insertUser(QuotaUserUserd quotaUserUserd) {
         userMapper.insertUser(quotaUserUserd);
     }
