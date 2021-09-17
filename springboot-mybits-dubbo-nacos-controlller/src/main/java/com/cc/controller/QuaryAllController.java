@@ -19,9 +19,7 @@ public class QuaryAllController {
 
     @RequestMapping("/insert")
     public void QuaryTest(@RequestBody QuotaUserUserd quotaUserUserd) {
-
         quaryAllServiceImp.insertUser(quotaUserUserd);
-
     }
 
     @RequestMapping("/queryAll")
