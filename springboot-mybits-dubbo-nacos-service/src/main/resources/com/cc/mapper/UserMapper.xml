@@ -5,6 +5,8 @@
 <!--写mapper的配置文件第一步就是要写<mapper></mapper>标签-->
 <!--<mapper></mapper>标签里包含着各个CURD操作的SQL语句-->
 <mapper namespace="com.cc.mapper.UserMapper">
+
+
     <!--定义一个名为BaseResultMap的返回类型-->
     <resultMap id="BaseResultMap" type="com.cc.pojo.QuotaUserUserd">
         <id column="USE_ID" property="userId" jdbcType="INTEGER"></id>
@@ -26,10 +28,10 @@
 
     <!--查找语句-->
     <!--resultMap表示函数返回的类型-->
-    <select id="selectAll" resultMap="BaseResultMap" resultType="com.cc.pojo.QuotaUserUserd" >
+    <select id="selectAll"  resultType="com.cc.pojo.QuotaUserUserd" >
         select * from quota_user_used
     </select>
-    <select id="selectById"  resultMap="BaseResultMap" parameterType="java.lang.Integer" resultType="com.cc.pojo.QuotaUserUserd" >
+    <select id="selectById"   parameterType="java.lang.Integer" resultType="com.cc.pojo.QuotaUserUserd" >
         select * from quota_user_used where USE_ID =#{useId,jdbcType=INTEGER}
     </select>
 

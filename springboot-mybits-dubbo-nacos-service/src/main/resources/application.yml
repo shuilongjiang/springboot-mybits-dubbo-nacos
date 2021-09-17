@@ -20,3 +20,5 @@ dubbo:
 
 mybatis:
   mapper-locations: classpath:com/cc/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

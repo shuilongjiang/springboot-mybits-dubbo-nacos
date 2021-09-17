@@ -3,7 +3,6 @@ package com.cc.controller;
 import com.cc.pojo.QuotaUserUserd;
 import com.cc.service.QuaryService;
 import org.apache.dubbo.config.annotation.Reference;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +29,7 @@ public class QuaryAllController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public Integer deleteById(@Param("useId") Integer useId) {
+    public Integer deleteById(Integer useId) {
         return quaryAllServiceImp.deleteById(useId);
     }
 
