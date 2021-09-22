@@ -20,7 +20,7 @@ public class DemoAspect {
     @Before("doDemo()")
     private void beforeDemo(JoinPoint joinPoint) {
 
-        System.out.println("切面执行前");
+        System.out.println("切  面执行前");
         System.out.println("目标方法名为:" + joinPoint.getSignature().getName());
         System.out.println("目标方法所属类的简单类名:" + joinPoint.getSignature().getDeclaringType().getSimpleName());
         System.out.println("目标方法所属类的类名:" + joinPoint.getSignature().getDeclaringTypeName());
