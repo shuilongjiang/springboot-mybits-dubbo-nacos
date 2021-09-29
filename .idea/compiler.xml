@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springboot-mybits-dubbo-nacos-controlller" />
         <module name="springboot-api" />
+        <module name="springboot-mybits-dubbo-nacos-controlller" />
+        <module name="labuladong" />
         <module name="springboot-mybits-dubbo-nacos-service" />
       </profile>
     </annotationProcessing>

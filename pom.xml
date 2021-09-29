@@ -12,6 +12,7 @@
         <module>springboot-mybits-dubbo-nacos-controlller</module>
         <module>springboot-mybits-dubbo-nacos-service</module>
         <module>springboot-api</module>
+        <module>labuladong</module>
     </modules>
 
 
