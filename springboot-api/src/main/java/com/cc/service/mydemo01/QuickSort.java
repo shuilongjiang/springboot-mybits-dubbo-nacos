@@ -3,7 +3,7 @@ package com.cc.service.mydemo01;
 import java.util.Arrays;
 
 /**
- * Description: 快速排序
+ * Description: 排序大全
  *
  * @author Jiang Shuilong 2021-12-13 16:47
  **/
@@ -16,7 +16,7 @@ public class QuickSort {
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
-            sort004(arr1);
+            sort007(arr1);
             comparator(arr2);
             if (!isEqual(arr1, arr2)) {
                 succeed = false;
@@ -28,9 +28,123 @@ public class QuickSort {
         System.out.println(succeed ? "Nice!" : "Fucking fucked!");
         int[] arr = generateRandomArray(maxSize, maxValue);
         printArray(arr);
-        sort004(arr);
+        sort007(arr);
         printArray(arr);
 
+    }
+
+    /*
+     *快排
+     */
+    public static void sort00601(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        doSort00601(arr, 0, arr.length - 1);
+    }
+
+    public static void doSort00601(int[] arr, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int m = arr[right];
+        int l = left - 1;
+        int r = right;
+        for (int i = left; i < r; i++) {
+            if (arr[i] > m) {
+                swap(arr, --r, i--);
+            } else if (arr[i] == m) {
+
+            } else {
+                swap(arr, ++l, i);
+            }
+        }
+        swap(arr, right, r);
+        doSort00601(arr, r + 1, right);
+        doSort00601(arr, left, l);
+    }
+    /*
+     *堆
+     */
+    public static void sort007(int[] arr) {
+        if (null == arr || arr.length < 2) {
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            insertHeap(arr, i);
+        }
+        int size = arr.length;
+        swap(arr, 0, --size);
+        while (size > 0) {
+            doSort007(arr, 0, size);
+            swap(arr, 0, --size);
+        }
+    }
+
+    public static void doSort007(int[] arr, int index, int size) {
+        int left = 2 * index + 1;
+        while (left < size) {
+            int max = left+1 < size && arr[left+1] > arr[left]  ? left+1 : left;
+            max = arr[index] > arr[max] ? index : max;
+            if(max == index){return;}
+            swap(arr,index,max);
+            index = max;
+            left = 2 * index + 1;
+        }
+    }
+
+    public static void insertHeap(int[] arr, int i) {
+        while (arr[i] > arr[(i - 1) / 2]) {
+            swap(arr, i, (i - 1) / 2);
+            i = (i - 1) / 2;
+        }
+    }
+
+    /*
+     *桶
+     */
+    public static void sort006(int[] arr) {
+
+    }
+
+    /*
+     *归并
+     */
+    public static void sort005(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        mergeSort(arr, 0, arr.length - 1);
+    }
+
+    public static void mergeSort(int[] arr, int l, int r) {
+        if (l == r) {
+            return;
+        }
+        int mid = l + ((r - l) >> 1);
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, r);
+        doMerge(arr, l, mid, r);
+    }
+
+    public static void doMerge(int[] arr, int l, int mid, int r) {
+        int[] help = new int[r - l + 1];
+        int left = l;
+        int right = mid + 1;
+        int i = 0;
+        while (left <= mid && right <= r) {
+            help[i++] = arr[left] < arr[right] ? arr[left++] : arr[right++];
+        }
+        while (left <= mid) {
+            help[i++] = arr[left++];
+        }
+        while (right <= r) {
+            help[i++] = arr[right++];
+        }
+        i = 0;
+        for (int k = l; k <= r; k++) {
+            arr[k] = help[i++];
+        }
     }
 
     /*
@@ -80,19 +194,12 @@ public class QuickSort {
     }
 
     /*
-     *快速
-     */
-    public static void sort001s01(int[] arr) {
-
-    }
-
-    /*
      *交换数组的两个元素(根据下标)
      */
     public static void swap(int[] arr, int i, int j) {
-        arr[i] = arr[i] ^ arr[j];
-        arr[j] = arr[i] ^ arr[j];
-        arr[i] = arr[i] ^ arr[j];
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
     //==================================================
