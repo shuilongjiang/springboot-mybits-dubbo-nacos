@@ -16,7 +16,7 @@ public class QuickSort {
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
-            sort007(arr1);
+            sort006(arr1);
             comparator(arr2);
             if (!isEqual(arr1, arr2)) {
                 succeed = false;
@@ -28,9 +28,8 @@ public class QuickSort {
         System.out.println(succeed ? "Nice!" : "Fucking fucked!");
         int[] arr = generateRandomArray(maxSize, maxValue);
         printArray(arr);
-        sort007(arr);
+        sort006(arr);
         printArray(arr);
-
     }
 
     /*
@@ -104,7 +103,61 @@ public class QuickSort {
      *桶
      */
     public static void sort006(int[] arr) {
+        if(null == arr || arr.length < 2){
+            return;
+        }
+        int tong = 10;
+        int maxLen = maxLen(arr);
+        int[] count = new int[10];
+        int left = 0;
+        int right = arr.length - 1;
+        int[] bue = new int[arr.length];
+        for(int i = 1; i <= maxLen; i++){
+            for(int k = 0; k <= right; k++){
+                int num = maxLen(arr[k], i);
+                count[num]++;
+            }
+            for(int k = 1; k < count.length; k++){
+                count[k] = count[k] + count[k - 1];
+            }
+            for(int k = right; k >= 0; k--){
+                int num = maxLen(arr[k], i);
+                bue[count[num] - 1] = arr[k];
+                count[num]--;
+            }
+            for(int k = 0; k <= right; k++){
+                arr[k]=bue[k];
+            }
+        }
+    }
+    /*
+     *获取数字第几位的的数字是多少
+     */
+    public static int maxLen(int num, int n){
+        /*while(n>1){
+            num = num / 10;
+            n--;
+        }
+        return num % 10;*/
 
+        return ((num / ((int) Math.pow(10, n - 1))) % 10);
+    }
+    /*
+    *获取最大位数
+    */
+    public static int maxLen(int[] arr){
+        int max = arr[0];
+         for(int x : arr){
+            if(x > max){
+                max = x;
+            }
+        }
+         int maxLen = 0;
+         while(max != 0){
+             max = max / 10;
+             maxLen++;
+         }
+         return maxLen;
     }
 
     /*
