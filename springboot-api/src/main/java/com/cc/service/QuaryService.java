@@ -8,6 +8,6 @@ public interface QuaryService {
     List<QuotaUserUserd> quaryAll();
     void insertUser(QuotaUserUserd quotaUserUserd);
     int  deleteById(Integer useId);
-    int updateUser  (QuotaUserUserd quotaUserUserd);
+    int updateUser (QuotaUserUserd quotaUserUserd);
     QuotaUserUserd  selectById(Integer useId);
 }
