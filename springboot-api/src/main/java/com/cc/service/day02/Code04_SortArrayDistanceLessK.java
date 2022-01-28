@@ -13,7 +13,7 @@ public class Code04_SortArrayDistanceLessK {
 		int i = 0;
 		for (; index < arr.length; i++, index++) {
 			heap.add(arr[index]);
-			arr[i] = heap.poll();
+			    arr[i] = heap.poll();
 		}
 		while (!heap.isEmpty()) {
 			arr[i++] = heap.poll();
