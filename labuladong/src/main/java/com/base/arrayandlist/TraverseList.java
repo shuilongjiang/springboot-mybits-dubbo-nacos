@@ -24,7 +24,7 @@ public class TraverseList {
         traverseOne(listNode);
 
         System.out.println("非递归遍历");
-        traverse(listNode);
+        traverse( listNode);
     }
 
     //非递归遍历
