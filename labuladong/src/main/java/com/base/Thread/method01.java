@@ -9,6 +9,9 @@ import java.util.concurrent.*;
  **/
 public class method01 {
     public static void main(String[] args) {
+        String a =new String();
+        StringBuilder b =new StringBuilder();
+        StringBuffer c = new StringBuffer();
         Thread t1 = new Thread(new Thread01());
         t1.start();
         Thread02 t2 =new Thread02();

@@ -15,6 +15,7 @@ public class ReentrantLockTest {
 
         lock.lock();
         try {
+
             System.out.println("线程名" + thread.getName() + "获得了锁");
             Thread.sleep(1000);
         } catch (Exception e) {

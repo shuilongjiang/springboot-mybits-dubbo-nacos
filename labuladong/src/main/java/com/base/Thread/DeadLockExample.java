@@ -11,7 +11,7 @@ public class DeadLockExample {
         Thread3301 thread01 = new Thread3301();
         Thread3301 thread02 = new Thread3301();
         Thread t1 = new Thread(thread01,"t1");
-        Thread t2 = new Thread(thread01,"t2");
+        Thread t2 = new Thread(thread02,"t2");
         t1.start();
         t2.start();
     }
